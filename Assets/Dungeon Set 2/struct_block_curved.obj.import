@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cv05fy7ie5ebd"
+path="res://.godot/imported/struct_block_curved.obj-e62fa003f8dcaf6e9a66f33b2edc55e4.mesh"
+
+[deps]
+
+files=["res://.godot/imported/struct_block_curved.obj-e62fa003f8dcaf6e9a66f33b2edc55e4.mesh"]
+
+source_file="res://Assets/Dungeon Set 2/struct_block_curved.obj"
+dest_files=["res://.godot/imported/struct_block_curved.obj-e62fa003f8dcaf6e9a66f33b2edc55e4.mesh", "res://.godot/imported/struct_block_curved.obj-e62fa003f8dcaf6e9a66f33b2edc55e4.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

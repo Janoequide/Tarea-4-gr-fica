@@ -1,0 +1,143 @@
+[gd_scene load_steps=8 format=3 uid="uid://c6nxrjj24oe0t"]
+
+[ext_resource type="PackedScene" uid="uid://bljnfrhqxnbyu" path="res://staff_01.tscn" id="1_gmj2u"]
+
+[sub_resource type="GDScript" id="GDScript_0peno"]
+script/source = "extends CharacterBody3D
+
+
+const SPEED = 4.0
+const JUMP_VELOCITY = 4.5
+
+#Character
+var gravity = 12
+@onready var neck = $Neck
+@onready var camera = $Neck/Camera3D
+@onready var animation_player = $AnimationPlayer
+
+#Magic
+@onready var staff_02 = $Neck/Camera3D/staff02
+@onready var gem = $Neck/Camera3D/staff02/Gem
+@onready var crosshair = $Neck/Camera3D/staff02/RayCast3D
+@onready var fireball = preload(\"res://fireball_node.tscn\")
+
+func _input(event):
+	if event is InputEventMouseMotion:
+		neck.rotate_y(-event.relative.x * 0.004)
+		camera.rotate_x(-event.relative.y * 0.004)
+		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-70), deg_to_rad(60))
+	if Input.is_action_just_pressed(\"Cast_spell\"):
+		if animation_player.current_animation != \"Cast\":
+			animation_player.play(\"Cast\")
+			
+	if Input.is_action_just_pressed(\"Cast_fireball\"):
+		if animation_player.current_animation != \"Cast\":
+			animation_player.play(\"Cast\")
+			spawn_fireball()
+			
+
+func spawn_fireball():
+	var magic = fireball.instantiate()
+	magic.position = gem.global_position
+	magic.transform.basis = crosshair.global_transform.basis
+	get_parent().add_child(magic)
+
+func _ready():
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+func _physics_process(delta):
+	if not is_on_floor():
+		velocity.y -= gravity * delta
+
+	if Input.is_action_just_pressed(\"Jump\") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+
+	var input_dir = Input.get_vector(\"Left\", \"Right\", \"Forward\", \"Backward\")
+	var direction = (neck.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if direction:
+		velocity.x = direction.x * SPEED
+		velocity.z = direction.z * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.z = move_toward(velocity.z, 0, SPEED)
+
+	move_and_slide()
+"
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_oso80"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nj6vi"]
+
+[sub_resource type="Animation" id="Animation_os1lu"]
+resource_name = "Cast"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Neck/Camera3D/staff02:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.404916, -1.67203, 0.279253), Vector3(0.404916, -1.67203, 0.886627), Vector3(0.404916, -1.67203, 0.886627), Vector3(0.404916, -1.67203, 0.279253)]
+}
+
+[sub_resource type="Animation" id="Animation_pyhvp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Neck/Camera3D/staff02:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.404916, -1.67203, 0.279253)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h2ao4"]
+_data = {
+"Cast": SubResource("Animation_os1lu"),
+"RESET": SubResource("Animation_pyhvp")
+}
+
+[node name="Character" type="CharacterBody3D"]
+script = SubResource("GDScript_0peno")
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+mesh = SubResource("CapsuleMesh_oso80")
+
+[node name="Neck" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Neck"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.79723, 0)
+
+[node name="staff02" parent="Neck/Camera3D" instance=ExtResource("1_gmj2u")]
+transform = Transform3D(-0.143623, -0.209332, -0.640101, 0.177344, 0.530118, -0.275759, 0.661756, -0.187498, -0.065022, 0.7, -0.64723, -0.5)
+
+[node name="RayCast3D" type="RayCast3D" parent="Neck/Camera3D/staff02"]
+transform = Transform3D(0.819291, 0.4764, -0.31907, 0.233415, -0.785391, -0.573306, -0.523717, 0.395229, -0.754663, 0.0423887, 1.78323, -0.165523)
+enabled = false
+exclude_parent = false
+collide_with_bodies = false
+
+[node name="Gem" type="Marker3D" parent="Neck/Camera3D/staff02"]
+transform = Transform3D(1, -2.23517e-08, 0, 2.23517e-08, 1, -2.98023e-08, 0, 1.49012e-08, 1, 0.0423887, 1.78323, -0.165523)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+shape = SubResource("CapsuleShape3D_nj6vi")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_h2ao4")
+}

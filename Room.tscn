@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://dhou0wevp2tis"]
+
+[ext_resource type="PackedScene" uid="uid://b8pwgwtiy8hd3" path="res://door_node.tscn" id="1_rlncg"]
+[ext_resource type="PackedScene" uid="uid://cu2v3eoqmr8iq" path="res://floor_node.tscn" id="2_t31y1"]
+[ext_resource type="PackedScene" uid="uid://uv4ye2ub1037" path="res://barrel_node.tscn" id="3_0lj7s"]
+[ext_resource type="PackedScene" uid="uid://dcoe1ucrkkvxr" path="res://wall_node.tscn" id="4_w1c47"]
+[ext_resource type="PackedScene" uid="uid://b3763gr5lrvg2" path="res://wall_torch_node.tscn" id="5_xj4fm"]
+[ext_resource type="PackedScene" uid="uid://dnf1ishhfylkp" path="res://brazier_node.tscn" id="6_yuijx"]
+
+[node name="Room" type="Node3D"]
+
+[node name="DoorNode" parent="." instance=ExtResource("1_rlncg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.47166)
+
+[node name="FloorNode" parent="." instance=ExtResource("2_t31y1")]
+
+[node name="BarrelNode" parent="." instance=ExtResource("3_0lj7s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.40184, 0, 4)
+
+[node name="WallNode" parent="." instance=ExtResource("4_w1c47")]
+
+[node name="WallNode2" parent="." instance=ExtResource("4_w1c47")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="WallNode3" parent="." instance=ExtResource("4_w1c47")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="WallNode4" parent="." instance=ExtResource("4_w1c47")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.9231)
+
+[node name="WallTorchNode" parent="." instance=ExtResource("5_xj4fm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.457, 1, -9.62)
+
+[node name="WallTorchNode2" parent="." instance=ExtResource("5_xj4fm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.492, 1, -9.62)
+
+[node name="BrazierNode" parent="." instance=ExtResource("6_yuijx")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4.47912, 0, 0.980077)

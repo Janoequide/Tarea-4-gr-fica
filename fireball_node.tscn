@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://f2hfv3a8fuwq"]
+
+[ext_resource type="Script" path="res://fireball_node.gd" id="1_6ehk8"]
+[ext_resource type="Texture2D" uid="uid://bom7u4vwj050n" path="res://Assets/fire2.jpg" id="1_keate"]
+[ext_resource type="PackedScene" uid="uid://cwajb4ivvxd0p" path="res://fire.tscn" id="2_sk6og"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ctblj"]
+transparency = 1
+blend_mode = 3
+shading_mode = 0
+albedo_texture = ExtResource("1_keate")
+
+[sub_resource type="SphereMesh" id="SphereMesh_ru4ty"]
+material = SubResource("StandardMaterial3D_ctblj")
+radius = 0.2
+height = 0.4
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_r0euw"]
+radius = 0.206759
+
+[node name="FireballNode" type="RigidBody3D"]
+mass = 0.1
+gravity_scale = 0.3
+max_contacts_reported = 3
+contact_monitor = true
+can_sleep = false
+linear_velocity = Vector3(3, 0, 0)
+script = ExtResource("1_6ehk8")
+
+[node name="Fireball" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_ru4ty")
+skeleton = NodePath("../..")
+
+[node name="Fire" parent="." instance=ExtResource("2_sk6og")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0393562, 0)
+amount = 25
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_r0euw")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(0.803922, 0.411765, 0.109804, 1)
+light_energy = 0.8

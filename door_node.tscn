@@ -1,0 +1,52 @@
+[gd_scene load_steps=10 format=3 uid="uid://b8pwgwtiy8hd3"]
+
+[ext_resource type="ArrayMesh" uid="uid://vhvpdms1o7nd" path="res://Assets/Dungeon Set 2/prop_wall_big_door_wood.obj" id="1_wnry5"]
+[ext_resource type="Texture2D" uid="uid://bgbedf1a6y0i6" path="res://Assets/Wizard/textures/pine_green.jpg" id="2_vk562"]
+[ext_resource type="ArrayMesh" uid="uid://dqp3gc2n27u0u" path="res://Assets/Dungeon Set 2/struct_wall_straight_base.obj" id="2_wdhtg"]
+[ext_resource type="ArrayMesh" uid="uid://bjxsusowlks5l" path="res://Assets/Dungeon Set 2/struct_wall_big_door_lower.obj" id="3_qu744"]
+[ext_resource type="ArrayMesh" uid="uid://batgnw4rp3py0" path="res://Assets/Dungeon Set 2/struct_wall_big_door_upper.obj" id="4_bqqfm"]
+[ext_resource type="ArrayMesh" uid="uid://vxpy8wglo1yi" path="res://Assets/Dungeon Set 2/struct_wall_straight_top.obj" id="5_7wa2g"]
+[ext_resource type="ArrayMesh" uid="uid://fpkvtc20cw4w" path="res://Assets/Dungeon Set 2/struct_wall_straight_topper.obj" id="6_gqy05"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ojpnw"]
+size = Vector3(2, 2.6, 0.4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pvdek"]
+albedo_texture = ExtResource("2_vk562")
+
+[node name="DoorNode" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.32009, -0.5)
+shape = SubResource("BoxShape3D_ojpnw")
+
+[node name="Door" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.15, 0, 0, 0, 1, 0, 0, 0)
+mesh = ExtResource("1_wnry5")
+surface_material_override/5 = SubResource("StandardMaterial3D_pvdek")
+
+[node name="Base" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.6, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, 0)
+mesh = ExtResource("2_wdhtg")
+
+[node name="Base2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.6, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 0, 0)
+mesh = ExtResource("2_wdhtg")
+
+[node name="Lower" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+mesh = ExtResource("3_qu744")
+
+[node name="Upper" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+mesh = ExtResource("4_bqqfm")
+
+[node name="Top" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.4, 0)
+mesh = ExtResource("5_7wa2g")
+
+[node name="Topper" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2.4, 0)
+mesh = ExtResource("6_gqy05")

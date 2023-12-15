@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://kcitovsdhhmf"]
+
+[ext_resource type="PackedScene" uid="uid://cjltximnokb8u" path="res://Assets/Wizard/Wizard Swing3.blend" id="1_1dyjp"]
+
+[node name="Wizard" type="Node3D"]
+
+[node name="Wizard Swing3" parent="." instance=ExtResource("1_1dyjp")]

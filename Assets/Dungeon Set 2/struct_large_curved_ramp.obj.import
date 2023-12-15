@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://07tdn1h38gtj"
+path="res://.godot/imported/struct_large_curved_ramp.obj-4e07be15e642c015cb56c2a15183c21b.mesh"
+
+[deps]
+
+files=["res://.godot/imported/struct_large_curved_ramp.obj-4e07be15e642c015cb56c2a15183c21b.mesh"]
+
+source_file="res://Assets/Dungeon Set 2/struct_large_curved_ramp.obj"
+dest_files=["res://.godot/imported/struct_large_curved_ramp.obj-4e07be15e642c015cb56c2a15183c21b.mesh", "res://.godot/imported/struct_large_curved_ramp.obj-4e07be15e642c015cb56c2a15183c21b.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://uv4ye2ub1037"]
+
+[ext_resource type="ArrayMesh" uid="uid://g7v02lskbpqd" path="res://Assets/Dungeon Set 2/prop_floor_barrel.obj" id="1_0oy03"]
+[ext_resource type="Texture2D" uid="uid://bgbedf1a6y0i6" path="res://Assets/Wizard/textures/pine_green.jpg" id="2_2giln"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qm7id"]
+albedo_texture = ExtResource("2_2giln")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s4r0d"]
+albedo_texture = ExtResource("2_2giln")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pah0v"]
+albedo_texture = ExtResource("2_2giln")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7ocav"]
+points = PackedVector3Array(-0.210233, 0.25, -0.5075, -0.20298, 0.149961, -0.490014, -0.5075, 0.25, -0.210233, -0.210233, 0.75, -0.5075, 0.210134, 0.25, -0.5075, -0.165722, 0, -0.400098, -0.490014, 0.149961, -0.20298, 0.202881, 0.149961, -0.490014, -0.5075, 0.25, 0.210134, -0.5075, 0.75, -0.210233, -0.20298, 0.849941, -0.490014, 0.210134, 0.75, -0.5075, 0.5075, 0.25, -0.210233, -0.400098, 0, -0.165722, 0.165623, 0, -0.400098, -0.490014, 0.149961, 0.202881, 0.489914, 0.149961, -0.20298, -0.5075, 0.75, 0.210134, -0.210233, 0.25, 0.5075, -0.490014, 0.849941, -0.20298, -0.165722, 1, -0.400098, 0.202881, 0.849941, -0.490014, 0.5075, 0.75, -0.210233, 0.5075, 0.25, 0.210134, -0.400098, 0, 0.165623, 0.399999, 0, -0.165722, -0.20298, 0.149961, 0.489914, 0.489914, 0.149961, 0.202881, -0.490014, 0.849941, 0.202881, -0.210233, 0.75, 0.5075, 0.210134, 0.25, 0.5075, -0.400098, 1, -0.165722, 0.165623, 1, -0.400098, 0.489914, 0.849941, -0.20298, 0.5075, 0.75, 0.210134, -0.165722, 0, 0.399999, 0.399999, 0, 0.165623, 0.202881, 0.149961, 0.489914, -0.400098, 1, 0.165623, -0.20298, 0.849941, 0.489914, 0.210134, 0.75, 0.5075, 0.399999, 1, -0.165722, 0.489914, 0.849941, 0.202881, 0.165623, 0, 0.399999, -0.165722, 1, 0.399999, 0.202881, 0.849941, 0.489914, 0.399999, 1, 0.165623, 0.165623, 1, 0.399999)
+
+[node name="BarrelNode" type="Node3D"]
+
+[node name="Barrel" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_0oy03")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_qm7id")
+surface_material_override/2 = SubResource("StandardMaterial3D_s4r0d")
+surface_material_override/4 = SubResource("StandardMaterial3D_pah0v")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Barrel"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Barrel/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_7ocav")

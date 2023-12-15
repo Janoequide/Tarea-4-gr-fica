@@ -1,0 +1,120 @@
+[gd_scene load_steps=28 format=3 uid="uid://cwajb4ivvxd0p"]
+
+[ext_resource type="Gradient" path="res://Assets/fire_1_40/Fire.tres" id="1_v21m6"]
+[ext_resource type="Texture2D" uid="uid://bs8r1l67mrvm1" path="res://Assets/fire_1_40/fire_1b_40_1.png" id="2_pvjhw"]
+[ext_resource type="Texture2D" uid="uid://deus7xdwp4gc4" path="res://Assets/fire_1_40/fire_1b_40_2.png" id="3_3rfpv"]
+[ext_resource type="Texture2D" uid="uid://dvtw6wsvl4kl7" path="res://Assets/fire_1_40/fire_1b_40_11.png" id="4_qu3ps"]
+[ext_resource type="Texture2D" uid="uid://bpi2qid83bcyg" path="res://Assets/fire_1_40/fire_1b_40_12.png" id="5_73tdt"]
+[ext_resource type="Texture2D" uid="uid://dknblxl01ge0r" path="res://Assets/fire_1_40/fire_1b_40_14.png" id="6_l8qqa"]
+[ext_resource type="Texture2D" uid="uid://brsoifb6l4nfx" path="res://Assets/fire_1_40/fire_1b_40_15.png" id="7_soysr"]
+[ext_resource type="Texture2D" uid="uid://c6ou4jsvmyw08" path="res://Assets/fire_1_40/fire_1b_40_16.png" id="8_xh32l"]
+[ext_resource type="Texture2D" uid="uid://cieouaycypj0l" path="res://Assets/fire_1_40/fire_1b_40_17.png" id="9_0ka84"]
+[ext_resource type="Texture2D" uid="uid://byrvxjpi61jy2" path="res://Assets/fire_1_40/fire_1b_40_18.png" id="10_exnmp"]
+[ext_resource type="Texture2D" uid="uid://brmtiumkm6ngp" path="res://Assets/fire_1_40/fire_1b_40_19.png" id="11_te6rm"]
+[ext_resource type="Texture2D" uid="uid://blsitdfaxavr3" path="res://Assets/fire_1_40/fire_1b_40_20.png" id="12_381o4"]
+[ext_resource type="Texture2D" uid="uid://dlyeuwkj12olv" path="res://Assets/fire_1_40/fire_1b_40_3.png" id="13_41jst"]
+[ext_resource type="Texture2D" uid="uid://cxubcufvt5d67" path="res://Assets/fire_1_40/fire_1b_40_4.png" id="14_8y62j"]
+[ext_resource type="Texture2D" uid="uid://dqaid7rdr6eid" path="res://Assets/fire_1_40/fire_1b_40_5.png" id="15_kp12c"]
+[ext_resource type="Texture2D" uid="uid://chny2oy1dc30d" path="res://Assets/fire_1_40/fire_1b_40_6.png" id="16_x5v0o"]
+[ext_resource type="Texture2D" uid="uid://fhf01bcjtdtr" path="res://Assets/fire_1_40/fire_1b_40_7.png" id="17_8xn31"]
+[ext_resource type="Texture2D" uid="uid://cxusqa66ei02k" path="res://Assets/fire_1_40/fire_1b_40_8.png" id="18_njy0l"]
+[ext_resource type="Texture2D" uid="uid://ccrarn7rcvvbb" path="res://Assets/fire_1_40/fire_1b_40_9.png" id="19_s6jyi"]
+[ext_resource type="Texture2D" uid="uid://bhb2uj8hheudr" path="res://Assets/fire_1_40/fire_1b_40_10.png" id="20_rd4kn"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_engsq"]
+gradient = ExtResource("1_v21m6")
+
+[sub_resource type="Curve" id="Curve_efngw"]
+_data = [Vector2(0.00649351, 0.209091), 0.0, 0.0, 0, 0, Vector2(0.142857, 0.372727), 0.0, 0.0, 0, 0, Vector2(0.272727, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_t1x3j"]
+curve = SubResource("Curve_efngw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w7dp4"]
+lifetime_randomness = 0.29
+emission_shape = 1
+emission_sphere_radius = 0.15
+direction = Vector3(0, 1, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.5
+initial_velocity_max = 1.0
+angular_velocity_max = 40.0
+angle_max = 360.0
+scale_min = 0.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_t1x3j")
+color_ramp = SubResource("GradientTexture1D_engsq")
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_bfrdl"]
+frames = 20
+speed_scale = 0.1
+frame_0/texture = ExtResource("2_pvjhw")
+frame_0/duration = 0.01
+frame_1/texture = ExtResource("3_3rfpv")
+frame_1/duration = 0.01
+frame_2/texture = ExtResource("13_41jst")
+frame_2/duration = 0.01
+frame_3/texture = ExtResource("14_8y62j")
+frame_3/duration = 0.01
+frame_4/texture = ExtResource("15_kp12c")
+frame_4/duration = 0.01
+frame_5/texture = ExtResource("16_x5v0o")
+frame_5/duration = 0.01
+frame_6/texture = ExtResource("17_8xn31")
+frame_6/duration = 0.01
+frame_7/texture = ExtResource("18_njy0l")
+frame_7/duration = 0.01
+frame_8/texture = ExtResource("19_s6jyi")
+frame_8/duration = 0.01
+frame_9/texture = ExtResource("20_rd4kn")
+frame_9/duration = 0.01
+frame_10/texture = ExtResource("4_qu3ps")
+frame_10/duration = 0.01
+frame_11/texture = ExtResource("5_73tdt")
+frame_11/duration = 0.01
+frame_12/texture = ExtResource("5_73tdt")
+frame_12/duration = 0.01
+frame_13/texture = ExtResource("6_l8qqa")
+frame_13/duration = 0.01
+frame_14/texture = ExtResource("7_soysr")
+frame_14/duration = 0.01
+frame_15/texture = ExtResource("8_xh32l")
+frame_15/duration = 0.01
+frame_16/texture = ExtResource("9_0ka84")
+frame_16/duration = 0.01
+frame_17/texture = ExtResource("10_exnmp")
+frame_17/duration = 0.01
+frame_18/texture = ExtResource("11_te6rm")
+frame_18/duration = 0.01
+frame_19/texture = ExtResource("12_381o4")
+frame_19/duration = 0.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gftl2"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("AnimatedTexture_bfrdl")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_g8awu"]
+lightmap_size_hint = Vector2i(3, 3)
+material = SubResource("StandardMaterial3D_gftl2")
+size = Vector2(0.3, 0.3)
+
+[node name="Fire" type="GPUParticles3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.280012, 0)
+cast_shadow = 0
+lod_bias = 0.001
+amount = 200
+lifetime = 0.5
+randomness = 1.0
+local_coords = true
+draw_order = 3
+process_material = SubResource("ParticleProcessMaterial_w7dp4")
+draw_pass_1 = SubResource("QuadMesh_g8awu")
